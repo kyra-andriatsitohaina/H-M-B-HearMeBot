@@ -23,6 +23,8 @@
     "@snazzah/davey": "^0.1.8",
     "discord.js": "^14.25.1",
     "dotenv": "^17.2.3",
-    "google-tts-api": "^2.0.2"
+    "google-tts-api": "^2.0.2",
+    "libsodium-wrappers": "^0.7.16",
+    "libsodium-wrappers-sumo": "^0.7.16"
   }
 }

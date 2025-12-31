@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import { Client, GatewayIntentBits, Collection } from "discord.js";
 import fs from 'fs';
+console.log("Deepgram API Key :", process.env.DEEPGRAM_API_KEY ? "OK" : "NON TROUVÉE");
 
 const client = new Client({
     intents: [
