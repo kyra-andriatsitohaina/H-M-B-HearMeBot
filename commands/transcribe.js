@@ -4,7 +4,7 @@ import axios from "axios";
 import { speechToText } from "../utils/stt.js";
 
 export default {
-    name: "transcrire",
+    name: "sorato",
     description: "Transcrire un message vocal en texte",
     async execute(message) {
 

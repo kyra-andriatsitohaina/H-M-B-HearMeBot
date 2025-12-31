@@ -65,7 +65,7 @@ export async function textToSpeech(texte, lang = 'fr') {
 
 // Commande Discord
 export default {
-    name: "lire",
+    name: "vakio",
     description: "Lire un message dans un salon vocal",
     async execute(message, args) {
         if (!args.length) return message.reply("Usage: !lire [langue] <texte>");
