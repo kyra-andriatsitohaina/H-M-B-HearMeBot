@@ -15,14 +15,12 @@ const client = new Client({
 client.commands = new Collection();
 
 async function loadCommandsAndEvents() {
-    // Charger commandes
     const commandFiles = fs.readdirSync('./commands').filter(f => f.endsWith('.js'));
     for (const file of commandFiles) {
         const command = await import(`./commands/${file}`);
         client.commands.set(command.default.name, command.default);
     }
 
-    // Charger events
     const eventFiles = fs.readdirSync('./events').filter(f => f.endsWith('.js'));
     for (const file of eventFiles) {
         const event = await import(`./events/${file}`);
@@ -37,7 +35,6 @@ async function loadCommandsAndEvents() {
 const prefix = process.env.PREFIX;
 
 client.on("messageCreate", (message) => {
-        // Affiche le message dans la console
     console.log(`[${message.author.tag}] ${message.content}`);
 
     if (message.author.bot) return;
@@ -48,7 +45,6 @@ client.on("messageCreate", (message) => {
 });
 
 
-// Charger commandes et events puis se connecter
 loadCommandsAndEvents().then(() => {
     client.login(process.env.DISCORD_TOKEN);
 });

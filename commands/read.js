@@ -16,9 +16,8 @@ const SUPPORTED_LANGS = [
   'no','pl','pt','ro','ru','si','sk','sl','sr','su','sv','sw','ta','te','th','tl','tr','uk','ur','vi','zh'
 ];
 
-// Fonction pour télécharger le MP3 avec retentative
 async function downloadMP3(url, filePath, retries = 3) {
-    const agent = new https.Agent({ family: 4 }); // force IPv4
+    const agent = new https.Agent({ family: 4 }); 
 
     for (let attempt = 1; attempt <= retries; attempt++) {
         try {
@@ -27,7 +26,7 @@ async function downloadMP3(url, filePath, retries = 3) {
                 url,
                 responseType: 'stream',
                 httpsAgent: agent,
-                timeout: 20000 // 20 secondes
+                timeout: 20000 
             });
 
             const writer = fs.createWriteStream(filePath);
@@ -38,16 +37,15 @@ async function downloadMP3(url, filePath, retries = 3) {
                 writer.on('error', reject);
             });
 
-            return filePath; // succès
+            return filePath; 
         } catch (err) {
             console.warn(`Tentative ${attempt} échouée : ${err.message}`);
             if (attempt === retries) throw new Error("Impossible de télécharger le fichier TTS !");
-            await new Promise(r => setTimeout(r, 2000)); // attendre 2s avant réessayer
+            await new Promise(r => setTimeout(r, 2000)); 
         }
     }
 }
 
-// Fonction principale TTS
 export async function textToSpeech(texte, lang = 'fr') {
     if (!texte) throw new Error("Le texte est vide !");
     if (!SUPPORTED_LANGS.includes(lang)) lang = 'fr';
@@ -63,7 +61,7 @@ export async function textToSpeech(texte, lang = 'fr') {
     return filePath;
 }
 
-// Commande Discord
+// komandy
 export default {
     name: "vakio",
     description: "Lire un message dans un salon vocal",

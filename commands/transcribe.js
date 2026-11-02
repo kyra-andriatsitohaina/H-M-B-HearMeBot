@@ -24,7 +24,6 @@ export default {
         const audioPath = path.resolve(`./stt-${Date.now()}.ogg`);
 
         try {
-            // Télécharger l'audio
             const response = await axios({
                 method: "GET",
                 url: attachment.url,
@@ -39,7 +38,6 @@ export default {
                 writer.on("error", reject);
             });
 
-            // Transcription
             const texte = await speechToText(audioPath);
 
             message.reply(`📝 **Transcription :**\n${texte || "Aucun texte détecté."}`);
